@@ -7,10 +7,10 @@ export class NavMain extends Component {
     render() {
         return (
             <div className="main-nav-links">
-                <Link to="/landing">Welcome</Link>
-                <Link to="/">Home</Link>
-                <Link to="/add-session">Add an Experience Card</Link>
-                <Link to="/session/:sessionId">Card Details</Link>
+                <Link to="/">Welcome</Link>
+                <Link to="/user/:userId">Home</Link>
+                <Link to="/add-card">Add an Experience Card</Link>
+                <Link to="/add-folder">Add a Folder</Link>
             </div>
         )
     }

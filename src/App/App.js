@@ -7,6 +7,7 @@ import NavMain from "../NavMain/NavMain";
 import UserProfile from "../UserProfile/UserProfile";
 import LandingPage from "../LandingPage/LandingPage";
 import CardDetail from "../CardDetail/CardDetail";
+import FolderCards from "../FolderCards/FolderCards"
 import './App.css';
 
 class App extends Component {
@@ -33,10 +34,9 @@ class App extends Component {
   renderMainRoutes() {
     return (
       <>
-        {["/", "/folder/:folderId"].map((path) => (
-          <Route exact key={path} path={path} component={UserProfile} />
-        ))}
-        <Route path="/landing" component={LandingPage} />
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/user/:userId" component={UserProfile} />
+        <Route exact path="/folder/:folderId" component={FolderCards} />
         <Route path="/card/:cardId" component={CardDetail} />
         <Route path="/add-folder" component={AddFolder} />
         <Route path="/add-card" component={AddCard} />

@@ -7,3 +7,7 @@
     right: 0;
     z-index: 10;
   }
+
+  a {
+    margin-right: 10px;
+  }

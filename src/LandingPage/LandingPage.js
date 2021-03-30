@@ -20,8 +20,7 @@ export class LandingPage extends Component {
         <header>
             <h3>Record your experiences</h3>
         </header>
-        <p>Observing celestial sights could connect us during a time when we're forced to be physically apart. Imagine that you and a family member of yours across the country both go
-        outside at night and talk to each other on the phone while looking up at the same night sky. We can have a shared collective experience and know that we're all looking up at the same night sky, 
+        <p>Observing celestial sights could connect us during a time when we're forced to be physically apart. We can have a shared collective experience and know that we're all looking up at the same night sky, 
         that we're not isolated, that we're not alone after all. Even though we may be having to socially distance in our houses right now, we're actually not alone at all. 
         </p>
         <p>In the DarkSky application, a user can login to their profile and create folders to help collect their thoughts and experiences while stargazing. For example, they could be broken down by
