@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 
 export class AddFolder extends Component {
   render() {
     return (
       <div>
-        <h1>
-          <Link to="/user/:id">DarkSky</Link>{" "}
-        </h1>
+        <h2>Add a Folder</h2>
         <form id="new-folder">
           <section className="form-folder overview-section">
           <label htmlFor="folder-title">Folder Title</label>

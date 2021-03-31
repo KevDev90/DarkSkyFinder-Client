@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import { fakeCards } from "../FolderCards/fakeCards";
 import { fakeFolders } from "../App/fakeFolders";
 import ApiContext from "../ApiContext";
 
@@ -18,29 +16,11 @@ export class AddCard extends Component {
     }
   }
 
-//   fetch(`${fakeCards}`, {
-//     // .then(res => {
-//     //   if (!res.ok)
-//     //     return res.json().then(e => Promise.reject(e))
-//     //   return res.json()
-//     // })
-//   })
-//     .then(newCard => {
-//       fakeCards.push(newCard)
-//     })
-//     .catch(error => {
-//       console.error({ error })
-//     })
-  
-
   render() {
     return (
       <div>
-        <h1>
-          <Link to="/user/:id">DarkSky</Link>{" "}
-        </h1>
         <header>
-          <h1>Add an Experience Card</h1>
+          <h2>Add an Experience Card</h2>
         </header>
         <form id="new-card">
           <section className="form-section overview-section">

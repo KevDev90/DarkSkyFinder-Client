@@ -11,9 +11,9 @@ export class NavMain extends Component {
     if (this.context.loggedIn) {
       return (
         <>
-          <Link to="/user/:userId">Home</Link>
-          <Link to="/add-card">Add an Experience Card</Link>
-          <Link to="/add-folder">Add a Folder</Link>
+          <Link className='text-link' to="/user/:userId">Home</Link>
+          <Link className='text-link' to="/add-card">Add an Experience Card</Link>
+          <Link className='text-link' to="/add-folder">Add a Folder</Link>
         </>
       );
     }
@@ -21,7 +21,7 @@ export class NavMain extends Component {
     render() {
         return (
             <div className="main-nav-links">
-                <Link to="/">Welcome</Link>
+                <Link className='text-link' to="/">Welcome</Link>
                 {this.renderLoggedInLinks()}
             </div>
         )

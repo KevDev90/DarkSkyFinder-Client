@@ -16,7 +16,7 @@ class App extends Component {
     this.state = {
       cards: [],
       folders: [],
-      loggedIn: false
+      loggedIn: true,
     };
   }
 
@@ -41,6 +41,13 @@ class App extends Component {
   }
 
   renderMainRoutes() {
+    if (this.state.loggedIn === false) {
+      return (
+        ["/", "/landing"].map((path) => (
+          <Route exact key={path} path={path} component={LandingPage} />
+        ))
+      )
+    }
     return (
       <>
         {["/", "/landing"].map((path) => (
@@ -70,7 +77,10 @@ class App extends Component {
             <NavMain/>
           </nav>
           <header className="App_header">
-            <h2>A logbook of all things celestial!</h2>
+            <h1>
+            <Link to="/landing">DarkSky</Link>{" "}
+            </h1>
+            <h2>A Logbook of All Things Celestial!</h2>
           </header>
           <main className="App_main">{this.renderMainRoutes()}</main>
           <footer className="content-info">Footer</footer>

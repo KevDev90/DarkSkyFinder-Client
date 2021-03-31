@@ -1,29 +1,32 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import { fakeCards } from "../FolderCards/fakeCards";
 
 class CardDetail extends Component {
+
+  handleAddClick = () => {
+    this.props.history.push('/add-card')
+  }
+
+handleEditClick = () => {
+    this.props.history.push('/edit-card')
+  }
+
   render() {
     const id = this.props.match.params.cardId;
     const specificCardArray = fakeCards.filter(
         (card) => card.id === parseInt(id)
       );
+    const specificCard = specificCardArray.length > 0 ? specificCardArray[0] : {}
       if (specificCardArray.length > 0) {
         return (
           <main role="main">
-            <h1>
-              <Link to="/user/:id">SK9</Link>{" "}
-            </h1>
-            {console.log(
-              "this is the specific card in the render:",
-              specificCardArray[0]
-            )}
-            <h2 className="Card__title">Title: {specificCardArray[0].title}</h2>
-            <p>{specificCardArray[0].details}</p>
-            <p>Drill Type: {specificCardArray[0].drill_type}</p>
+            <h2 className="Card__title">Title: {specificCard.title}</h2>
+            <p>{specificCard.details}</p>
+            <p>Drill Type: {specificCard.drill_type}</p>
             <div className="Card__dates">
               <div className="Card__dates-modified">
-                Modified <span className="Date">{specificCardArray[0].modified}</span>
+                Modified <span className="Date">{specificCard.modified}</span>
               </div>
             </div>
             <button
@@ -36,15 +39,14 @@ class CardDetail extends Component {
             <button
               className="Card__edit"
               type="button"
-              onClick={() => console.log("card edit clicked")}
+              onClick={() => this.handleEditClick()}
             >
               Edit
             </button>
             <button
-              path="/add-card"
               className="Card__add"
               type="button"
-              onClick={() => console.log("card add clicked")}
+              onClick={() => this.handleAddClick()}
             >
               Add Card
             </button>
@@ -60,4 +62,4 @@ class CardDetail extends Component {
   }
 }
 
-export default CardDetail;
+export default withRouter(CardDetail);

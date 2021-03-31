@@ -1,15 +1,15 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
 import ApiContext from "../ApiContext"
-import UserProfile from "../UserProfile/UserProfile";
+// import UserProfile from "../UserProfile/UserProfile";
 
 export class LandingPage extends Component {
     static contextType = ApiContext;
 
   loginForm() {
     if (this.context.loggedIn === false) {
-      return <LoginForm />
+      return <LoginPage />
   }
   return null
 }
@@ -17,9 +17,6 @@ export class LandingPage extends Component {
   render() {
     return (
       <div>
-      <h1>
-          <Link to="/">DarkSky</Link>{" "}
-        </h1>
         <section>
           <header>
             <h3>“The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in 
