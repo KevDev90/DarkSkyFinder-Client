@@ -1,10 +1,25 @@
 import React, { Component } from "react";
-import LoginPage from "../LoginPage/LoginPage"
+import { Link } from "react-router-dom";
+import LoginPage from "../LoginPage/LoginPage";
+import ApiContext from "../ApiContext"
+import UserProfile from "../UserProfile/UserProfile";
 
 export class LandingPage extends Component {
+    static contextType = ApiContext;
+
+  loginForm() {
+    if (this.context.loggedIn === false) {
+      return <LoginForm />
+  }
+  return null
+}
+
   render() {
     return (
       <div>
+      <h1>
+          <Link to="/">DarkSky</Link>{" "}
+        </h1>
         <section>
           <header>
             <h3>“The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in 
@@ -30,7 +45,9 @@ export class LandingPage extends Component {
         A user also has the option to add certain cards to their favorites section or to delete cards entirely if it wasn't a night to be remembered!
         </p>
       </section>
-      <section><LoginPage /></section>
+      <section>
+          {this.loginForm()}
+        </section>
       </div>
     );
   }

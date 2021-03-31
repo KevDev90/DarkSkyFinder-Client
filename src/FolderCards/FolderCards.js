@@ -6,24 +6,24 @@ import { fakeCards } from './fakeCards'
 export class FolderCards extends Component {
     render() {
         return (
-            <div>
-                <ul>
-          {fakeCards.map(card =>
-            <li key={card.id}>
-                <Link to={`/card/${card.id}`} render={(rprops) => <CardDetail {...rprops}/>}>
-            {card.title}
-          </Link>
-              {/* <CardDetail
-                id={card.id}
-                title={card.title}
-                details={card.details}
-              /> */}
+          <div>
+            <h1>
+              <Link to="/user/:id">DarkSky</Link>{" "}
+            </h1>
+            <ul>
+              {fakeCards.map((card) => (
+                <li key={card.id}>
+                <Link
+                to={`/card/${card.id}`}
+                render={(rprops) => <CardDetail {...rprops} />}
+              >
+                {card.title}
+              </Link>
             </li>
-          )}
-        </ul>
+            ))}
+            </ul>
             </div>
-        )
-    }
+    );
+  }
 }
-
 export default FolderCards

@@ -16,6 +16,7 @@ class App extends Component {
     this.state = {
       cards: [],
       folders: [],
+      loggedIn: false
     };
   }
 
@@ -23,18 +24,28 @@ class App extends Component {
 
   }
 
-  handleAddCard = () => {
-
+  handleAddCard = (card) => {
+    this.setState({
+      cards: [...this.state.cards, card],
+    });
   }
 
   handleDeleteCard = () => {
 
   }
 
+  handleLogin = () => {
+    this.setState({
+      loggedIn: true
+    })
+  }
+
   renderMainRoutes() {
     return (
       <>
-        <Route exact path="/" component={LandingPage} />
+        {["/", "/landing"].map((path) => (
+          <Route exact key={path} path={path} component={LandingPage} />
+        ))}
         <Route path="/user/:userId" component={UserProfile} />
         <Route exact path="/folder/:folderId" component={FolderCards} />
         <Route path="/card/:cardId" component={CardDetail} />
@@ -48,6 +59,9 @@ class App extends Component {
     const value = {
        cards: this.state.cards,
        folders: this.state.folders,
+       loggedIn: this.state.loggedIn,
+       login: this.handleLogin,
+       addCard: this.handleAddCard,
     };
     return (
       <ApiContext.Provider value={value}>
@@ -56,13 +70,9 @@ class App extends Component {
             <NavMain/>
           </nav>
           <header className="App_header">
-            <h1>
-              <Link to="/">DarkSky</Link>{" "}
-            </h1>
             <h2>A logbook of all things celestial!</h2>
           </header>
-          <main className="App_main">{this.renderMainRoutes()}
-          </main>
+          <main className="App_main">{this.renderMainRoutes()}</main>
           <footer className="content-info">Footer</footer>
         </div>
       </ApiContext.Provider>
