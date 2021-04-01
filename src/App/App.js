@@ -22,37 +22,49 @@ class App extends Component {
     };
   }
 
-componentDidMount() {
-  Promise.all(
-    fetch(`${config.API_ENDPOINT}/folders`, {
-      method: 'GET',
-      headers: {
-      'content-type': 'application/json',
-      //'Authorization': `Bearer ${config.API_KEY}`
-    }
-  })
-)
-    .then((foldersRes) => {
-      if (!foldersRes.ok)
-        return foldersRes.json().then((e) => Promise.reject(e));
+// componentDidMount() {
+//   Promise.all(
+//     fetch(`${config.API_ENDPOINT}/folders`, {
+//       method: 'GET',
+//       headers: {
+//       'content-type': 'application/json',
+//       //'Authorization': `Bearer ${config.API_KEY}`
+//     }
+//   })
+// )
+//     .then((foldersRes) => {
+//       if (!foldersRes.ok)
+//         return foldersRes.json().then((e) => Promise.reject(e));
 
-        return Promise.all(foldersRes.json());
-      })
-      .then((folders) => {
-        this.setState(folders);
-      })
-      .catch((error) => {
-        console.error({ error });
-      });
-  }
+//         return Promise.all(foldersRes.json());
+//       })
+//       .then((folders) => {
+//         this.setState(folders);
+//       })
+//       .catch((error) => {
+//         console.error({ error });
+//       });
+//   }
 
-  handleAddFolder(folder) {
+  // componentDidMount() {
+  //   this.setState({
+  //     folders: fakeFolders,
+  //   })
+  //   console.log(this.state.folders)
+  // }
+
+
+  handleAddFolder = (folder) => {
+    console.log(this.state.folders)
+    console.log(folder)
     this.setState({
       folders: [...this.state.folders, folder],
     });
   }
 
   handleAddCard = (card) => {
+    console.log("test")
+    console.log(card)
     this.setState({
       cards: [...this.state.cards, card],
     });
@@ -113,6 +125,7 @@ componentDidMount() {
     };
     return (
       <ApiContext.Provider value={value}>
+      {console.log(value)}
         <div className="App">
           <nav className="App_nav">
             <NavMain/>

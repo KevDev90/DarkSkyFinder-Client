@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { fakeFolders } from '../App/fakeFolders'
+import ApiContext from "../ApiContext";
+
 
 export class UserProfile extends Component {
+  static contextType = ApiContext
 render() {
   return (
     <main role="main">
@@ -12,7 +15,7 @@ render() {
     <header role="banner">
       <h2>Check out your Folders</h2>
     </header>
-    {fakeFolders.map((folder) => {
+    {this.context.folders.map((folder) => {
           return (
             <li key={folder.id}>
             <Link to={{
