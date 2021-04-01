@@ -9,7 +9,7 @@ export class LandingPage extends Component {
 
   loginForm() {
     if (this.context.loggedIn === false) {
-      return <LoginPage />
+      return <LoginPage/>
   }
   return null
 }

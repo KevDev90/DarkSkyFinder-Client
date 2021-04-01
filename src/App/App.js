@@ -8,7 +8,9 @@ import UserProfile from "../UserProfile/UserProfile";
 import LandingPage from "../LandingPage/LandingPage";
 import CardDetail from "../CardDetail/CardDetail";
 import FolderCards from "../FolderCards/FolderCards"
+import config from "../config";
 import './App.css';
+import { fakeFolders } from "./fakeFolders";
 
 class App extends Component {
   constructor(props) {
@@ -16,12 +18,38 @@ class App extends Component {
     this.state = {
       cards: [],
       folders: [],
-      loggedIn: true,
+      loggedIn: false,
     };
   }
 
-  componentDidMount() {
+componentDidMount() {
+  Promise.all(
+    fetch(`${config.API_ENDPOINT}/folders`, {
+      method: 'GET',
+      headers: {
+      'content-type': 'application/json',
+      //'Authorization': `Bearer ${config.API_KEY}`
+    }
+  })
+)
+    .then((foldersRes) => {
+      if (!foldersRes.ok)
+        return foldersRes.json().then((e) => Promise.reject(e));
 
+        return Promise.all(foldersRes.json());
+      })
+      .then((folders) => {
+        this.setState(folders);
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  }
+
+  handleAddFolder(folder) {
+    this.setState({
+      folders: [...this.state.folders, folder],
+    });
   }
 
   handleAddCard = (card) => {
@@ -30,8 +58,18 @@ class App extends Component {
     });
   }
 
-  handleDeleteCard = () => {
+  handleDeleteCard = (cardId) => {
+    this.setState({
+      cards: this.state.cards.filter(
+        (card) => card.id !== cardId
+      ),
+    });
+  }
 
+  handleDeleteFolder(folderId) {
+    this.setState({
+      folders: this.state.folders.filter((folder) => folder.id !== folderId),
+    });
   }
 
   handleLogin = () => {
@@ -69,6 +107,9 @@ class App extends Component {
        loggedIn: this.state.loggedIn,
        login: this.handleLogin,
        addCard: this.handleAddCard,
+       addFolder: this.handleAddFolder,
+       deleteCard: this.handleDeleteCard,
+       deleteFolder: this.handleDeleteFolder,
     };
     return (
       <ApiContext.Provider value={value}>

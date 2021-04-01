@@ -1,18 +1,27 @@
 import React, { Component } from "react";
 import { fakeFolders } from "../App/fakeFolders";
 import ApiContext from "../ApiContext";
+import { fakeCards } from "../FolderCards/fakeCards";
 
 export class AddCard extends Component {
     
   static contextType = ApiContext;
 
+  state = {
+    title: "",
+    details: "",
+    folderId: 1,
+  };
+
   handleSubmit = e => {
     e.preventDefault()
+    const { title, details, folderId} = this.state;
     const newCard = {
+          id: Date.now(),
           title: e.target["card-title"].value,
           details: e.target["card-content"].value,
           folder_id: e.target["folder-id"].value,
-          modified: new Date(), 
+          modified: new Date(),
     }
   }
 
@@ -51,7 +60,7 @@ export class AddCard extends Component {
             <textarea name="card-content" rows="15" required></textarea>
           </section>
 
-          <section className="form-section card-type-section">
+          {/* <section className="form-section card-type-section">
             <h2>Select weather type</h2>
             <input
               type="radio"
@@ -97,7 +106,7 @@ export class AddCard extends Component {
               <span>Winter</span>
             </label>
 
-          </section>
+          </section> */}
           <section className="button-section">
             <button type="submit">Submit</button>
             <button type="reset">Reset</button>

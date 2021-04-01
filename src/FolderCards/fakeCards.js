@@ -7,6 +7,13 @@ export const fakeCards = [
         details: "Sunny, warm, short",
     },
     {
+        id: 5,
+        title: "Card 5",
+        modified: "2021-03-01T14:07:31.292Z",
+        folder_id: 1,
+        details: "Sunny, warm, short",
+    },
+    {
         id: 2,
         title: "Card 2",
         modified: "2021-03-01T14:07:31.292Z",

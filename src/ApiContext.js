@@ -7,6 +7,7 @@ export default React.createContext({
   addFolder: () => {},
   addCard: () => {},
   deleteCard: () => {},
+  deleteFolder: () => {},
   favoriteCard: () => {},
   editCard: () => {},
 })
