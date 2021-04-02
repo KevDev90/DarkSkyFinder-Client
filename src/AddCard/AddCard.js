@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { fakeFolders } from "../App/fakeFolders";
+// import { fakeFolders } from "../App/fakeFolders";
 import ApiContext from "../ApiContext";
-import { fakeCards } from "../FolderCards/fakeCards";
+// import { fakeCards } from "../FolderCards/fakeCards";
 
 export class AddCard extends Component {
 
@@ -39,8 +39,8 @@ export class AddCard extends Component {
         // })
     }
     componentDidMount() {
-        const test = this.context
-        console.log(this.context)
+        // const test = this.context
+        // console.log(this.context)
     }
 
     render() {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import CardDetail from '../CardDetail/CardDetail'
-import { fakeCards } from './fakeCards'
+// import CardDetail from '../CardDetail/CardDetail'
+// import { fakeCards } from './fakeCards'
 import "./FolderCards.css";
 import ApiContext from "../ApiContext";
 

@@ -8,9 +8,9 @@ import UserProfile from "../UserProfile/UserProfile";
 import LandingPage from "../LandingPage/LandingPage";
 import CardDetail from "../CardDetail/CardDetail";
 import FolderCards from "../FolderCards/FolderCards"
-import config from "../config";
+// import config from "../config";
 import './App.css';
-import { fakeFolders } from "./fakeFolders";
+// import { fakeFolders } from "./fakeFolders";
 
 class App extends Component {
   constructor(props) {

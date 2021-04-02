@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
-import { fakeCards } from "../FolderCards/fakeCards";
+import { withRouter } from "react-router-dom";
+// import { fakeCards } from "../FolderCards/fakeCards";
 import ApiContext from "../ApiContext";
 
 class CardDetail extends Component {
@@ -22,7 +22,8 @@ class CardDetail extends Component {
   render() {
     const id = this.props.match.params.cardId;
     const { cards } = this.context
-    console.log(cards)
+    console.log(cards, 'cards')
+    console.log(cards, 'cards3')
     const specificCardArray = cards.filter(
       (card) => card.id === parseInt(id)
     );

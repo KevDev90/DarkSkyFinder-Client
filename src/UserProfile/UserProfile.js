@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { fakeFolders } from '../App/fakeFolders'
+// import { fakeFolders } from '../App/fakeFolders'
 import ApiContext from "../ApiContext";
 
 
