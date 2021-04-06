@@ -1,140 +1,149 @@
 import React, { Component } from "react";
-// import { fakeFolders } from "../App/fakeFolders";
 import ApiContext from "../ApiContext";
-// import { fakeCards } from "../FolderCards/fakeCards";
+import config from "../config";
+import "./AddCard.css";
 
 export class AddCard extends Component {
+  static contextType = ApiContext;
 
-    static contextType = ApiContext;
+  state = {
+    title: "",
+    details: "",
+    folderId: 1,
+    favorited: false,
+  };
 
-    state = {
-        title: "",
-        details: "",
-        folderId: 1,
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const { title, details, folderId, favorited } = this.state;
+    const newCard = {
+      title,
+      details,
+      folder_id: folderId,
+      favorite: favorited,
+      modified: new Date(),
     };
+    fetch(`${config.API_ENDPOINT}/cards`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newCard),
+    })
+      .then((res) => {
+        if (!res.ok) return res.json().then((e) => Promise.reject(e));
+        return res.json();
+      })
+      .then((newCard) => {
+        this.context.addCard(newCard);
+        this.props.history.push(`/user/:userId`);
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  };
 
-    handleSubmit = e => {
-        e.preventDefault()
-        // const { title, details, folderId, id } = this.state;
-        const newCard = {
-            id: Date.now(),
-            title: this.state.title,
-            details: this.state.details,
-            folderId: this.state.folderId,
-        }
-        console.log(newCard)
-        this.context.addCard(newCard)
-        this.props.history.push(`/card/${newCard.id}`)
-    }
+  handleRadioButton = (favorited) => {
+    this.setState({ favorited });
+  };
 
-    handleChange = e => {
-        this.setState({[e.target.name]: e.target.value})
-        console.log(e.target.name)
-        console.log(e.target.value, e.target.name)
-        // this.setState({
-        //     ...this.state,
-        //     title: e.target["card-title"].value,
-        //     details: e.target["details"].value,
-        //     folder_id: e.target["folder-id"].value,
-        // })
-    }
-    componentDidMount() {
-        // const test = this.context
-        // console.log(this.context)
-    }
+  render() {
+    const getFolders = this.context.folders;
+    return (
+      <div>
+        <h2>Add a Card</h2>
+        <form id="new-card" onSubmit={this.handleSubmit}>
+          <section className="form-section overview-section">
+            <label htmlFor="card-title" className="card-title">
+              Card Title
+            </label>
+            <br />
+            <input
+              type="text"
+              name="card-title"
+              placeholder="card Title"
+              required
+              value={this.state.title}
+              onChange={(e) => this.setState({ title: e.target.value })}
+            />
+          </section>
 
-    render() {
-        return (
-            <div>
-                <header>
-                    <h2>Add an Experience Card</h2>
-                </header>
-                <form id="new-card" onSubmit={this.handleSubmit}>
-                    <section className="form-section overview-section">
-                        <label htmlFor="title">card Title</label>
-                        <input
-                            type="text"
-                            name="title"
-                            placeholder="Card Title"
-                            required
-                            onChange={this.handleChange}
-                        />
-                    </section>
+          <section className="form-section overview-section">
+            <label htmlFor="card-folder" className="card-folder">
+              Card Folder
+            </label>
+            <br />
+            <select
+              name="card-folder"
+              id="card-folder"
+              onChange={(e) => this.setState({ folderId: e.target.value })}
+            >
+              {getFolders.map((folder) => {
+                return (
+                  <option key={folder.id} value={folder.id} name="folder-id">
+                    {folder.title}
+                  </option>
+                );
+              })}
+            </select>
+          </section>
 
-                    <section className="form-section overview-section">
-                        <label htmlFor="folderId">Card Folder</label>
-                        <select onChange={this.handleChange} name="folderId" id="folderId">
-                            {this.context.folders.map((folder) => {
-                                
-                                return (
-                                    <option key={folder.id} value={folder.id} name="folderId">
-                                        {folder.title}
-                                    </option>
-                                );
-                            })}
-                        </select>
-                    </section>
+          <section className="form-section overview-section">
+            <label htmlFor="card-content" className="card-content">
+              card content
+            </label>
+            <br />
+            <textarea
+              value={this.state.details}
+              name="card-content"
+              id="card-details-box"
+              rows="5"
+              onChange={(e) => this.setState({ details: e.target.value })}
+              required
+            ></textarea>
+          </section>
 
-                    <section className="form-section overview-section">
-                        <label htmlFor="details">Card content</label>
-                        <textarea onChange={this.handleChange} name="details" rows="15" required></textarea>
-                    </section>
-
-                    {/* <section className="form-section card-type-section">
-            <h2>Select weather type</h2>
+          <section className="form-section card-type-section">
+            <label htmlFor="card-favorite" className="card-favorite">
+              Select card favorite
+            </label>
+            <br />
             <input
               type="radio"
-              name="weather-type"
-              id="weather-type-spring"
-              value="0"
-              className="weather-type-radio"
+              name="card-favorite"
+              id="card-favorite-false"
+              value="False"
+              className="card-favorite-radio"
+              checked={this.state.favorited === "False"}
+              onChange={() => this.handleRadioButton("False")}
             />
-            <label htmlFor="weather-type-spring">
-              <span>Spring</span>
+            <label htmlFor="card-favorite-false">
+              <span>False</span>
             </label>
 
             <input
               type="radio"
-              name="weather-type"
-              id="weather-type-summer"
-              value="1"
-              className="weather-type-radio"
+              name="card-favorite"
+              id="card-favorite-true"
+              value="Blind"
+              className="card-favorite-radio"
+              checked={this.state.favorited === "True"}
+              onChange={() => this.handleRadioButton("True")}
             />
-            <label htmlFor="weather-type-summer">
-              <span>Summer</span>
+            <label htmlFor="card-favorite-true">
+              <span>True</span>
             </label>
+          </section>
 
-            <input
-              type="radio"
-              name="weather-type"
-              id="weather-type-fall"
-              value="2"
-              className="weather-type-radio"
-            />
-            <label htmlFor="weather-type-fall">
-              <span>Fall</span>
-            </label>
 
-            <input
-              type="radio"
-              name="weather-type"
-              id="weather-type-winter"
-              value="3"
-              className="weather-type-radio"
-            />
-            <label htmlFor="weather-type-winter">
-              <span>Winter</span>
-            </label>
 
-          </section> */}
-                    <section className="button-section">
-                        <button type="submit">Submit</button>
-                        <button type="reset">Reset</button>
-                    </section>
-                </form>
-            </div>
-        );
-    }
+          <section className="button-section">
+            <button type="submit">Submit</button>
+          </section>
+        </form>
+      </div>
+    );
+  }
 }
 
-export default AddCard
+export default AddCard;

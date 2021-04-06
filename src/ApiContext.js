@@ -9,5 +9,4 @@ export default React.createContext({
   deleteCard: () => {},
   deleteFolder: () => {},
   favoriteCard: () => {},
-  editCard: () => {},
 })

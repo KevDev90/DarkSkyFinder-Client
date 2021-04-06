@@ -2,3 +2,11 @@
     list-style: none;
     padding-right: 38px;
 }
+
+.Folder__delete {
+    margin-top: 20px;
+}
+
+.go-back {
+    margin: 10px;
+}

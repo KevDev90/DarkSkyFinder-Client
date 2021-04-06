@@ -1,8 +1,7 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
 import ApiContext from "../ApiContext"
-// import UserProfile from "../UserProfile/UserProfile";
+import "./LandingPage.css"
 
 export class LandingPage extends Component {
     static contextType = ApiContext;

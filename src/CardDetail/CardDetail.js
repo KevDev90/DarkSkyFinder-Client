@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-// import { fakeCards } from "../FolderCards/fakeCards";
 import ApiContext from "../ApiContext";
+import config from "../config";
+import "./CardDetail.css";
 
 class CardDetail extends Component {
   static contextType = ApiContext
@@ -10,66 +11,73 @@ class CardDetail extends Component {
     this.props.history.push('/add-card')
   }
 
-  handleEditClick = () => {
-    this.props.history.push('/edit-card')
-  }
+  handleClickDelete = (e) => {
+    const cardId = this.props.match.params.cardId;
 
-  handleDeleteClick = () => {
-    const id = this.props.match.params.cardId;
-    this.context.deleteCard(id)
-  }
+    fetch(`${config.API_ENDPOINT}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (!res.ok) return res.json().then((e) => Promise.reject(e));
+      })
+      .then(() => {
+        this.context.deleteCard(cardId);
+        this.props.history.push("/user/:userId");
+      })
+      .catch((error) => {
+        console.error({ error });
+      });
+  };
 
   render() {
     const id = this.props.match.params.cardId;
-    const { cards } = this.context
-    console.log(cards, 'cards')
-    console.log(cards, 'cards3')
-    const specificCardArray = cards.filter(
+    const specificCardArray = this.context.cards.filter(
       (card) => card.id === parseInt(id)
     );
-    const specificCard = specificCardArray.length > 0 ? specificCardArray[0] : {}
-    if (this.context.cards.length > 0) {
+    const specificCard =
+      specificCardArray.length > 0 ? specificCardArray[0] : {};
+    const dateString = specificCard.modified;
+    const modifiedDate = new Date(dateString);
+    const formattedDate = modifiedDate.toString();
+
+    if (specificCardArray.length > 0) {
       return (
-        <main role="main">
-          <h2 className="Card__title">Title: {specificCard.title}</h2>
-          <p>{specificCard.details}</p>
-          <p>Drill Type: {specificCard.drill_type}</p>
-          <div className="Card__dates">
-            <div className="Card__dates-modified">
-              Modified <span className="Date">{specificCard.modified}</span>
-            </div>
-          </div>
-          <button
-            className="Card__delete"
-            type="button"
-            onClick={() => this.handleDeleteClick()}
-          >
-            Delete
-            </button>
-          <button
-            className="Card__edit"
-            type="button"
-            onClick={() => this.handleEditClick()}
-          >
-            Edit
-            </button>
-          <button
-            className="Card__add"
-            type="button"
-            onClick={() => this.handleAddClick()}
-          >
-            Add Card
-            </button>
-        </main>
+        <div>
+          <section className="details">
+            <h2 className="Card__title">{specificCard.title}</h2>
+            <p>{specificCard.details}</p>
+            <h4>Favorited:</h4> {specificCard.favorite}
+            <h4>Modified:</h4> <span className="Date">{formattedDate}</span>
+            <section className="buttons">
+              <button
+                className="card-delete"
+                type="button"
+                onClick={() => this.handleClickDelete(specificCard)}
+              >
+                Delete Card
+              </button>
+              <button
+                className="card-add"
+                type="button"
+                onClick={() => this.handleAddClick()}
+              >
+                Add Card
+              </button>
+            </section>
+          </section>
+        </div>
       );
     }
     return (
       <div>
         <h1>Card not Found</h1>
       </div>
-    )
-
+    );
   }
+  
 }
 
 export default withRouter(CardDetail);
