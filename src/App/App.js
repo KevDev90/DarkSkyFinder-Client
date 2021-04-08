@@ -29,13 +29,13 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all([
-      fetch(`${config.API_ENDPOINT}/cards`, {
+      fetch(`${config.API_ENDPOINT}/api/cards`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
         },
       }),
-      fetch(`${config.API_ENDPOINT}/folders`, {
+      fetch(`${config.API_ENDPOINT}/api/folders`, {
         method: "GET",
         headers: {
           "content-type": "application/json",
