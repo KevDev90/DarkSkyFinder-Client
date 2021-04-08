@@ -23,7 +23,7 @@ export class AddCard extends Component {
       favorite: favorited,
       modified: new Date(),
     };
-    fetch(`${config.API_ENDPOINT}/cards`, {
+    fetch(`${config.API_ENDPOINT}/api/cards`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

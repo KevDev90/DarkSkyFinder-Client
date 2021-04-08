@@ -14,7 +14,7 @@ class CardDetail extends Component {
   handleClickDelete = (e) => {
     const cardId = this.props.match.params.cardId;
 
-    fetch(`${config.API_ENDPOINT}/cards/${cardId}`, {
+    fetch(`${config.API_ENDPOINT}/api/cards/${cardId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",

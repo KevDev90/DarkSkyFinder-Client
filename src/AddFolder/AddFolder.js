@@ -12,7 +12,7 @@ export class AddFolder extends Component {
     e.preventDefault();
     const { title } = this.state;
     const newFolder = { title };
-    fetch(`${config.API_ENDPOINT}/folders`, {
+    fetch(`${config.API_ENDPOINT}/api/folders`, {
       method: "POST",
       headers: {
         "content-type": "application/json",

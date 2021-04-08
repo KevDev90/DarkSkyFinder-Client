@@ -19,7 +19,7 @@ export class FolderCards extends Component {
   handleClickDelete = (e) => {
     const folderId = this.context.selectedFolder.id;
 
-    fetch(`${config.API_ENDPOINT}/folders/${folderId}`, {
+    fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
