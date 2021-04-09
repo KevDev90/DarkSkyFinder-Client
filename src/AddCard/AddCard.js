@@ -103,7 +103,7 @@ export class AddCard extends Component {
             ></textarea>
           </section>
 
-          <section className="form-section card-type-section">
+          {/* <section className="form-section card-type-section">
             <label htmlFor="card-favorite" className="card-favorite">
               Select card favorite
             </label>
@@ -133,7 +133,7 @@ export class AddCard extends Component {
             <label htmlFor="card-favorite-true">
               <span>True</span>
             </label>
-          </section>
+          </section> */}
 
 
 
