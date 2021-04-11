@@ -41,6 +41,7 @@ export class FolderCards extends Component {
     const folderId = this.context.selectedFolder.id;
     const cards = this.context.cards;
     const cardsForFolder = getCardsForFolder(cards, folderId);
+    
     if (cardsForFolder.length === 0 ) {
       return (
         <>
@@ -63,6 +64,7 @@ export class FolderCards extends Component {
         </>
       )
     }
+    
     return (
       <div>
         <h2>

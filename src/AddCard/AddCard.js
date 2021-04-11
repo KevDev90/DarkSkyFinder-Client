@@ -10,17 +10,18 @@ export class AddCard extends Component {
     title: "",
     details: "",
     folderId: 1,
-    favorited: false,
+    // favorited: false,
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
-    const { title, details, folderId, favorited } = this.state;
+    // const { title, details, folderId, favorited } = this.state;
+    const { title, details, folderId } = this.state;
     const newCard = {
       title,
       details,
       folder_id: folderId,
-      favorite: favorited,
+      // favorite: favorited,
       modified: new Date(),
     };
     fetch(`${config.API_ENDPOINT}/api/cards`, {
