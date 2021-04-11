@@ -13,7 +13,7 @@ export class FolderCards extends Component {
   }
 
   handleAddClick = () => {
-    this.props.history.push("/add-card");
+    this.props.history.push(`/add-card?folderId=${this.context.selectedFolder.id}`);
   };
 
   handleClickDelete = (e) => {

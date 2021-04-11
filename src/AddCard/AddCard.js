@@ -9,12 +9,13 @@ export class AddCard extends Component {
   state = {
     title: "",
     details: "",
-    folderId: 1,
+    folderId: new URLSearchParams(this.props.location.search).get("folderId")
     // favorited: false,
   };
 
   handleSubmit = (e) => {
     e.preventDefault();
+    debugger
     // const { title, details, folderId, favorited } = this.state;
     const { title, details, folderId } = this.state;
     const newCard = {
@@ -49,6 +50,7 @@ export class AddCard extends Component {
   };
 
   render() {
+    debugger;
     const getFolders = this.context.folders;
     return (
       <div>
@@ -77,6 +79,7 @@ export class AddCard extends Component {
             <select
               name="card-folder"
               id="card-folder"
+              value={new URLSearchParams(this.props.location.search).get("folderId")}
               onChange={(e) => this.setState({ folderId: e.target.value })}
             >
               {getFolders.map((folder) => {
