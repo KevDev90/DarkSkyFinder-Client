@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import ApiContext from "../ApiContext";
 import config from "../config";
+import { trackPromise } from 'react-promise-tracker';
+
 import "./AddCard.css";
 
 export class AddCard extends Component {
@@ -15,16 +17,14 @@ export class AddCard extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    debugger
-    // const { title, details, folderId, favorited } = this.state;
     const { title, details, folderId } = this.state;
     const newCard = {
       title,
       details,
       folder_id: folderId,
-      // favorite: favorited,
       modified: new Date(),
     };
+    trackPromise(
     fetch(`${config.API_ENDPOINT}/api/cards`, {
       method: "POST",
       headers: {
@@ -42,7 +42,7 @@ export class AddCard extends Component {
       })
       .catch((error) => {
         console.error({ error });
-      });
+      }));
   };
 
   handleRadioButton = (favorited) => {

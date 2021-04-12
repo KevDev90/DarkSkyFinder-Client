@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import config from "../config";
 import ApiContext from "../ApiContext";
+import { trackPromise } from 'react-promise-tracker';
+
 export class AddFolder extends Component {
   static contextType = ApiContext;
 
@@ -12,6 +14,7 @@ export class AddFolder extends Component {
     e.preventDefault();
     const { title } = this.state;
     const newFolder = { title };
+    trackPromise(
     fetch(`${config.API_ENDPOINT}/api/folders`, {
       method: "POST",
       headers: {
@@ -29,7 +32,7 @@ export class AddFolder extends Component {
       })
       .catch((error) => {
         console.error({ error });
-      });
+      }));
   };
 
   render() {

@@ -9,6 +9,7 @@ import UserProfile from "../UserProfile/UserProfile";
 import LandingPage from "../LandingPage/LandingPage";
 import CardDetail from "../CardDetail/CardDetail";
 import FolderCards from "../FolderCards/FolderCards";
+import { trackPromise } from 'react-promise-tracker';
 import "./App.css";
 
 
@@ -28,6 +29,7 @@ class App extends Component {
   };
 
   componentDidMount() {
+    trackPromise(
     Promise.all([
       fetch(`${config.API_ENDPOINT}/api/cards`, {
         method: "GET",
@@ -55,7 +57,7 @@ class App extends Component {
       })
       .catch((error) => {
         console.error({ error });
-      });
+      }));
   }
 
   handleAddFolder = (folder) => {

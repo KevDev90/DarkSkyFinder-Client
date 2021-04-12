@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 import ApiContext from "../ApiContext";
 import config from "../config";
+import { trackPromise } from 'react-promise-tracker';
 import "./CardDetail.css";
 
 class CardDetail extends Component {
@@ -13,7 +14,7 @@ class CardDetail extends Component {
 
   handleClickDelete = (e) => {
     const cardId = this.props.match.params.cardId;
-
+    trackPromise(
     fetch(`${config.API_ENDPOINT}/api/cards/${cardId}`, {
       method: "DELETE",
       headers: {
@@ -29,7 +30,7 @@ class CardDetail extends Component {
       })
       .catch((error) => {
         console.error({ error });
-      });
+      }));
   };
 
   render() {

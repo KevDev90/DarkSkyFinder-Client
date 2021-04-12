@@ -4,6 +4,7 @@ import "./FolderCards.css";
 import ApiContext from "../ApiContext";
 import config from "../config";
 import { getCardsForFolder } from "../card-helpers";
+import { trackPromise } from 'react-promise-tracker';
 
 export class FolderCards extends Component {
   static contextType = ApiContext;
@@ -18,7 +19,7 @@ export class FolderCards extends Component {
 
   handleClickDelete = (e) => {
     const folderId = this.context.selectedFolder.id;
-
+    trackPromise(
     fetch(`${config.API_ENDPOINT}/api/folders/${folderId}`, {
       method: "DELETE",
       headers: {
@@ -34,7 +35,7 @@ export class FolderCards extends Component {
       })
       .catch((error) => {
         console.error({ error });
-      });
+      }));
   };
 
   render() {

@@ -18,7 +18,7 @@ export class UserProfile extends Component {
         <ul>
           {this.context.folders.map((folder) => {
             return (
-              <li key={folder.id}>
+              <li key={folder.id} className="folder-display">
                 <Link
                   to={{
                     pathname: `/folder/${folder.id}`,
