@@ -19,7 +19,7 @@ export class LandingPage extends Component {
     return (
       <div>
         <section>
-        <img src={Nasa} className="nasa-image" alt="milky way img" />
+        <img src={Nasa} className="nasa-image" alt="milky way image" />
           <header>
             <p>“The nitrogen in our DNA, the calcium in our teeth, the iron in our blood, the carbon in our apple pies were made in
             the interiors of collapsing stars. We are made of starstuff. ― Carl Sagan"
@@ -41,7 +41,6 @@ export class LandingPage extends Component {
           the time of year, weather conditions, their stargazing location, who you stargazed with, or celestial events such as meteor showers or eclipses.
         </p>
           <p>Users also have the ability to add experience cards to folders. These cards include a title for reference, details about the experience, their location, and the date of their experience.
-          A user also has the option to add certain cards to their favorites section or to delete cards entirely if it wasn't a night to be remembered!
         </p>
         </section>
         <section>

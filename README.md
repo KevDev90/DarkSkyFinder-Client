@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+Live app: (https://dark-sky-finder-client-kevdev90.vercel.app/)
+<br />
+API Repo: (https://github.com/KevDev90/DarkSkyFinder-API)
+## Table of Contents
+- Summary
+- Screenshots
+- Technologies
+## Summary
+Observing celestial sights could connect us during a time when we're forced to be physically apart. We can have a shared collective experience and know that we're all looking up at the same night sky,
+that we're not isolated, that we're not alone after all. Even though we may be having to socially distance in our houses right now, we're actually not alone at all.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+In the DarkSky application, a user can login to their profile and create folders to help collect their thoughts and experiences while stargazing. For example, they could be broken down by
+the time of year, weather conditions, their stargazing location, who you stargazed with, or celestial events such as meteor showers or eclipses.
 
-## Available Scripts
+Users also have the ability to add experience cards to folders. These cards include a title for reference, details about the experience, their location, and the date of their experience.
 
-In the project directory, you can run:
+## Screenshots
+### Landing Page 
+<img src="./src/Images/landing.png" alt="darksky landing page" width="450" >
+### User Dashboard
+<img src="./src/Images/user-profile.png" alt="darksky user dashboard" width="450" >
+### Add a New Session
+<img src="./src/Images/add-card.png" alt="add card" width="450" >
+## Technologies
+For this app, I used:
+- PostgreSQL
+- Express
+- React.js
+- Node.js
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Upcoming Features:
+- User login and registration
+- Ability to edit sessions and favorite sessions after they're created
