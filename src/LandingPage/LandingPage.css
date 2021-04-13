@@ -4,3 +4,20 @@
     align-items: center;
     margin-bottom: 15px;
 }
+
+.nasa-image {
+    width: 88%;
+    height: 200px;;
+}
+
+p {
+    margin-bottom: 3%;
+    margin-top: 3%;
+}
+
+  @media screen and (max-width: 520px) {
+    .nasa-image {
+        width: 88%;
+        height: 150px;
+    }
+  }

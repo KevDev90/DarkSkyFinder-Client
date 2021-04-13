@@ -96,3 +96,8 @@ form button {
 form button.cancel {
   background-color: #999;
 }
+
+.logo-image {
+  width: 200px;
+  border-radius: 20px;
+}

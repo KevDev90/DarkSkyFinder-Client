@@ -10,6 +10,7 @@ import LandingPage from "../LandingPage/LandingPage";
 import CardDetail from "../CardDetail/CardDetail";
 import FolderCards from "../FolderCards/FolderCards";
 import { trackPromise } from 'react-promise-tracker';
+import Logo from "../favicon.jpeg"
 import "./App.css";
 
 
@@ -144,6 +145,7 @@ class App extends Component {
                 <Link to="/landing">DarkSky</Link>{" "}
               </h1>
               <h2>A Logbook of All Things Celestial!</h2>
+              <img src={Logo} className="logo-image" alt="milky way img" />
             </header>
             <main className="App_main">
               <LandingPage />
