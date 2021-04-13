@@ -50,7 +50,6 @@ class CardDetail extends Component {
           <section className="details">
             <h2 className="Card__title">{specificCard.title}</h2>
             <p>{specificCard.details}</p>
-            <h4>Favorited:</h4> {specificCard.favorite}
             <h4>Modified:</h4> <span className="Date">{formattedDate}</span>
             <section className="buttons">
               <button

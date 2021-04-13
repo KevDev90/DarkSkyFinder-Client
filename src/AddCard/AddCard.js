@@ -12,7 +12,6 @@ export class AddCard extends Component {
     title: "",
     details: "",
     folderId: new URLSearchParams(this.props.location.search).get("folderId")
-    // favorited: false,
   };
 
   handleSubmit = (e) => {
@@ -49,8 +48,11 @@ export class AddCard extends Component {
     this.setState({ favorited });
   };
 
+  componentDidMount () {
+    this.setState({folderId: this.context.folders[0].id})
+  }
+
   render() {
-    debugger;
     const getFolders = this.context.folders;
     return (
       <div>
@@ -76,7 +78,7 @@ export class AddCard extends Component {
               Card Folder
             </label>
             <br />
-            <select
+            <select id="selectId"
               name="card-folder"
               id="card-folder"
               value={new URLSearchParams(this.props.location.search).get("folderId")}
@@ -106,40 +108,6 @@ export class AddCard extends Component {
               required
             ></textarea>
           </section>
-
-          {/* <section className="form-section card-type-section">
-            <label htmlFor="card-favorite" className="card-favorite">
-              Select card favorite
-            </label>
-            <br />
-            <input
-              type="radio"
-              name="card-favorite"
-              id="card-favorite-false"
-              value="False"
-              className="card-favorite-radio"
-              checked={this.state.favorited === "False"}
-              onChange={() => this.handleRadioButton("False")}
-            />
-            <label htmlFor="card-favorite-false">
-              <span>False</span>
-            </label>
-
-            <input
-              type="radio"
-              name="card-favorite"
-              id="card-favorite-true"
-              value="Blind"
-              className="card-favorite-radio"
-              checked={this.state.favorited === "True"}
-              onChange={() => this.handleRadioButton("True")}
-            />
-            <label htmlFor="card-favorite-true">
-              <span>True</span>
-            </label>
-          </section> */}
-
-
 
           <section className="button-section">
             <button type="submit">Submit</button>

@@ -31,3 +31,11 @@ textarea {
 .button-section {
     margin-top: 25px;
 }
+
+.text-hide {
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
+  }
