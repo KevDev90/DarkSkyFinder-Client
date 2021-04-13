@@ -43,12 +43,12 @@ export class NavMain extends Component {
             <span></span>
             <span></span>
             <span></span>
-            <ul id="menu">
+            <div id="menu">
               <Link className="text-link" to="/">
                 Welcome
               </Link>
               {this.renderLoggedInLinks()}
-            </ul>
+            </div>
           </div>
         </nav>
       );
