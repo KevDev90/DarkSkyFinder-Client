@@ -19,7 +19,7 @@ Users also have the ability to add experience cards to folders. These cards incl
 <img src="./src/Images/landing.png" alt="darksky landing page" width="450" >
 ### User Dashboard
 <img src="./src/Images/user-profile.png" alt="darksky user dashboard" width="450" >
-### Add a New Session
+### Add a New Card
 <img src="./src/Images/add-card.png" alt="add card" width="450" >
 ## Technologies
 For this app, I used:
@@ -31,4 +31,4 @@ For this app, I used:
 
 ## Upcoming Features:
 - User login and registration
-- Ability to edit sessions and favorite sessions after they're created
+- Ability to edit cards and favorite cards after they're created
