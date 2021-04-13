@@ -2,6 +2,36 @@ import React, { Component } from "react";
 import LoginPage from "../LoginPage/LoginPage";
 import ApiContext from "../ApiContext"
 import "./LandingPage.css"
+import axios from "axios";
+
+const pictureName = document.querySelector(".picture-name");
+const imageOfTheDay = document.querySelector(".daily-image");
+
+const apiPicOfTheDay = axios.get("https://api.nasa.gov/planetary/apod?", {
+  params: {
+    api_key: "DEMO_KEY",
+    
+    
+  },
+});
+
+console.log(apiPicOfTheDay);
+
+const getImageOfTheDay = () => {
+  apiPicOfTheDay
+    .then((response) => {
+      imageOfTheDay.insertAdjacentHTML(
+        "beforeend",
+        `<img src=${response.data.hdurl}>`
+      );
+      pictureName.insertAdjacentHTML("beforeend", `${response.data.title}`);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+getImageOfTheDay();
 
 export class LandingPage extends Component {
     static contextType = ApiContext;
